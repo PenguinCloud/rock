@@ -9,3 +9,6 @@ maas:
     password: "{{ lookup('ansbile.builtin.env', 'MAAS_ADMIN_PASSWORD')}}"
     email: "{{ lookup('ansbile.builtin.env', 'MAAS_ADMIN_EMAIL')}}"
     sshkey: "{{ lookup('ansbile.builtin.env', 'MAAS_ADMIN_SSHKEY')}}"
+  nodetype: "{{ lookup('ansbile.builtin.env', 'MAAS_NODETYPE')}}"
+terraform:
+  enable: "{{ lookup('ansbile.builtin.env', 'TERRAFORM_ENABLE')}}

@@ -21,5 +21,6 @@
     - name: Build And Install
       include_tasks:
         file: jobs/build/build.yml
-
-    
+    - name: Install Terraform
+      include_tasks:
+        file: jobs/run/terraform.yml
