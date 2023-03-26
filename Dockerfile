@@ -24,7 +24,7 @@ ENV MAAS_ADMIN_USER="ptg-user"
 ENV MAAS_ADMIN_PASSWORD="ChangeMeNow!"
 ENV MAAS_ADMIN_EMAIL="user@localnet"
 ENV MAAS_ADMIN_SSHKEY=""
-ENV TERRAFORM_ENABLE="1"
+ENV TERRAFORM_ENABLE="0"
 
 # Switch to non-root user
 USER ptg-user

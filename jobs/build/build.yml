@@ -26,3 +26,6 @@
           (?i)Import: "{{ maas.admin.sshkey}}"
   when: maas.nodetype > 0
 
+- name: Install Terraform
+  include_tasks:
+    file: jobs/build/terraform.yml
