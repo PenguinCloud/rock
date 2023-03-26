@@ -1,0 +1,6 @@
+---
+- name: Install Region Controller
+  ansible.apt.builtin:
+    pkg:
+      - maas-region-controller
+      
