@@ -2,17 +2,21 @@
 
 
 # Project Overview
-<< This is a template. Copy this templated repository to make new projects. Once done, add a 1 paragraph introduction / elevator speech about your project.
->>
+Our rock image is a combined Ubuntu MaaS and Hashicorp Terraform built into a single image designed to spin up MaaS and initiate Terraform runs.
+
 # Why this image vs others
 ## Built in self testing and healing
 All PTG builds have unit and dynamic tests as part of the build of their images, as well as during runtime to ensure the system keeps running as expected. If the system falls out of bounds of the test, the images have some self healing capabilities fix common minor problems.
 
+Our image also allows you to quickly get servers provisioned and start building out your infrastructure in no time!
+
 ## Secured... even if the software isn'template
 All PTG images under go a 8 stage security check to ensure not only is the PTG portion of the code secure, but to also identify and help remediate the underlying libraries and software security. 
 
-## Updated daily
-All of our images are checked daily for updates from upstream sources.
+Our containers are ran as non-root images, ensuring even more protection between your standard build.
+
+## Updated As Much as you want
+Our nightly images are built daily for updates from upstream sources. We will perform minor release updates at least monthly and major release updates as needed.
 
 ## Designed for air-gapped or for internet facing
 All PTG images are designed to be ran inside of air gapped environments with no internet, allowing datacenters to use a local cache as well saving bandwidth.

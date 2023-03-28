@@ -1,0 +1,31 @@
+---
+- name: Install MaaS PPA
+  ansible.builtin.apt-repository"
+    repo: "{{ maas.repo }}"
+- name: Validate nodetype number
+  debug:
+    msg: "Invalid Rock nodetype! must be 1 or 2, see docs!"
+  when: maas.nodetype < 1
+- name: Run install based on nodetype
+  block:
+    - name: Install Region Controller
+      ansible.apt.builtin:
+        pkg:
+          - maas-rack-controller
+      when: maas.nodetype == 1
+    - name: Install Region Controller
+      ansible.apt.builtin:
+        pkg:
+          - maas-region-controller
+      when: maas.nodetype == 2
+    - name: Create admin user
+      no_log: true
+      ansible.builtin.expect:
+        command: "maas createadmin --username={{ maas.admin.user }} --password={{ maas.admin.user }} --email={{maas.admin.email }}"
+        responses:
+          (?i)Import: "{{ maas.admin.sshkey}}"
+  when: maas.nodetype > 0
+
+- name: Install Terraform
+  include_tasks:
+    file: jobs/build/terraform.yml

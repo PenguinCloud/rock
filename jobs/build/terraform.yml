@@ -1,0 +1,12 @@
+---
+- name: Install Terraform requirements
+  ansible.builtin.apt:
+    pkg:
+      - software-properties-common 
+      - gnupg2 
+      - curl
+- name: Install hashicorp gpg
+  ansible.built.apt_repository:
+    url:  https://apt.releases.hashicorp.com/gpg
+    keyring: /etc/apt/trusted.gpg.d/terraform.gpg
+    

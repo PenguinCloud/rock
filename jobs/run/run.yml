@@ -1,0 +1,17 @@
+---
+- name: Create admin user
+  no_log: true
+  ansible.builtin.expect:
+    command: "maas createadmin --username={{ maas.admin.user }} --password={{ maas.admin.user }} --email={{maas.admin.email }}"
+    responses:
+      (?i)Import: "{{ maas.admin.sshkey}}"
+- name: Get TF Files
+  ansible.builtin.find:
+    paths: "/opt/manager/data"
+    recurse: yes
+    pattterns: '*.tf'
+  register: tf_files
+- name: Execute TF files
+  community.general.terraform:
+    project_path: "/opt/manager/data"
+  when: terraform.enable == 1

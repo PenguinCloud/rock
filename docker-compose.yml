@@ -1,5 +1,15 @@
 ---
 version: "2.4"
 services:
-  app:
-    image: penguintech/core-ansible
+  rock:
+    build: .
+    image: rock
+    ports:
+      - 5240:5240
+      - 127.0.0.1:5241-5247:5241-5247
+      - 5248:5248
+      - 5250-5270:5250-5270
+    restart: on-error
+    env_file: .env
+    volumes:
+      - /opt/manager/data
